@@ -1,8 +1,24 @@
 import Tone from 'tone'
 
-// var reverb = new Tone.JCReverb(0.3).connect(Tone.Master)
-// var delay = new Tone.FeedbackDelay(0.1)
-// connecting the synth to reverb through delay
-const synth = new Tone.PolySynth(4, Tone.Synth).chain(reverb)
+const options = {
+  'oscillator': {
+    'partials': [
+      1,
+      0,
+      2,
+      0,
+      3
+    ]
+  },
+  'envelope': {
+    'attack': 0.005,
+    'decay': 1.2,
+    'sustain': 0.2,
+    'release': 1.2
+  }
+}
 
-export default synth
+const poly = new Tone.PolySynth(4, Tone.Synth).toMaster()
+poly.set(options)
+window.poly = poly
+export default poly

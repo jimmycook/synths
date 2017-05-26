@@ -7,12 +7,15 @@ class Keyboard {
       window.navigator.requestMIDIAccess({ sysex: true })
         .then((res) => {
           this.midiAccess = res
-          this.input = this.midiAccess.inputs.values().next().value
-          this.input.onmidimessage = (midiEvent) => {
+
+          const midiCallback = (midiEvent) => {
             if (midiEvent.data[0] === 144) {
               this._noteEvent(midiEvent)
             }
           }
+          this.midiAccess.inputs.forEach((element) => {
+            element.onmidimessage = midiCallback
+          })
         })
     } else {
       console.log('No Web MIDI support')
@@ -21,12 +24,15 @@ class Keyboard {
     this.notes = new PressedNotes()
     this.noteCallback
     this.midiAccess = null
-    this.input
+  }
+
+  onNote (callback) {
+    this.noteCallback = callback
   }
 
   _noteEvent (midiEvent) {
     const note = new Note(midiEvent)
-      // console.log(note)
+
     if (!note.velocity) {
       this.notes.delete(note)
     } else {

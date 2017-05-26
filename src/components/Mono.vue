@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    MonoSynth
+    <p>MonoSynth</p>
+    <p>Connect a midi keyboard to use the synth</p>
+    <button class="button" @click="synth.triggerAttackRelease('C4', '1n')">Play a test note</button>
   </div>
 </template>
 
@@ -8,15 +10,20 @@
 import MonoSynth from '@/midi/MonoSynth.js'
 export default {
   name: 'hello',
+  data () {
+    return {
+      synth: null
+    }
+  },
   mounted () {
-    const mono = new MonoSynth()
-    mono.init()
+    this.synth = new MonoSynth()
+    this.synth.init()
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 h1, h2 {
   font-weight: normal;
 }
@@ -33,5 +40,14 @@ li {
 
 a {
   color: #42b983;
+}
+
+.button {
+  background-color: white;
+  outline: none;
+  border: 1px solid #4fc08d;
+  padding: 9px;
+  border-radius: 3px;
+  color: #2c3e50
 }
 </style>

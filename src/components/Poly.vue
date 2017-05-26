@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    PolySynth
+    <p>PolySynth</p>
+    <p>Connect a midi keyboard to use the synth</p>
+    <button class="button" @click="testChord">Play a test chord</button>
   </div>
 </template>
 
@@ -8,30 +10,19 @@
 import PolySynth from '@/midi/PolySynth.js'
 export default {
   name: 'poly',
+  data () {
+    return {
+      synth: null
+    }
+  },
   mounted () {
-    const poly = new PolySynth()
-    poly.init()
+    this.synth = new PolySynth()
+    this.synth.init()
+  },
+  methods: {
+    testChord () {
+      this.synth.triggerAttackRelease(['C4', 'E4', 'G4'], '1n')
+    }
   }
 }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
