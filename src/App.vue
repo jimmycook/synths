@@ -3,6 +3,9 @@
     <header>
       <router-link to="/">Mono</router-link>
       <router-link to="/poly">Poly</router-link>
+      <router-link to="/drums">Drums</router-link>
+      <!--<a @click="toggleMute" :class="mute ? 'is-muted' : ''">{{ muteText }}</a>-->
+      <volume-slider></volume-slider>
     </header>
     <main>
       <router-view></router-view>
@@ -11,10 +14,33 @@
 </template>
 
 <script>
+import Tone from 'tone'
+import VolumeSlider from '@/components/VolumeSlider'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    VolumeSlider
+  },
+  data () {
+    return {
+      mute: false
+    }
+  },
+  computed: {
+    muteText () {
+      if (this.mute) {
+        return 'Unmute'
+      }
+      return 'Mute'
+    }
+  },
+  methods: {
+    toggleMute () {
+      Tone.Master.mute = !Tone.Master.mute
+      this.mute = Tone.Master.mute
+    }
+  }
 }
-
 </script>
 
 <style>
