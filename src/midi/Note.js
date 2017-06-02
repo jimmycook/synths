@@ -13,6 +13,7 @@ export default class Note {
       velocity = 0
     }
     this.velocity = velocity
+    console.log(this)
   }
 
   _decode (noteNum) {

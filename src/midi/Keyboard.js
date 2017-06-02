@@ -7,7 +7,6 @@ class Keyboard {
       window.navigator.requestMIDIAccess({ sysex: true })
         .then((res) => {
           this.midiAccess = res
-
           const midiCallback = (midiEvent) => {
             if (midiEvent.data[0] === 144) {
               this._noteEvent(midiEvent)

@@ -1,27 +1,27 @@
 import Keyboard from '@/midi/Keyboard'
 import Tone from 'tone'
 
-// const options = {
-//   'oscillator': {
-//     'partials': [
-//       1,
-//       0,
-//       2,
-//       0,
-//       3
-//     ]
-//   },
-//   'envelope': {
-//     'attack': 0.001,
-//     'decay': 1.2,
-//     'sustain': 0,
-//     'release': 1.2
-//   }
-// }
+const options = {
+  'oscillator': {
+    'partials': [
+      1,
+      0,
+      2,
+      0,
+      3
+    ]
+  },
+  'envelope': {
+    'attack': 0.001,
+    'decay': 1.2,
+    'sustain': 0,
+    'release': 1.2
+  }
+}
 
 export default class MonoSynth {
   constructor () {
-    this.synth = new Tone.Synth().toMaster()
+    this.synth = new Tone.Synth(options).toMaster()
   }
 
   init () {
@@ -30,7 +30,7 @@ export default class MonoSynth {
       if (!n.velocity) {
         this.synth.triggerRelease()
       } else {
-        this.synth.triggerAttack(n.note, '4n')
+        this.synth.triggerAttack(n.note)
       }
     })
   }
