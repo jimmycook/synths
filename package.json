@@ -14,7 +14,8 @@
   "dependencies": {
     "tone": "^0.10.0",
     "vue": "^2.2.2",
-    "vue-router": "^2.2.0"
+    "vue-router": "^2.2.0",
+    "webmidi": "^2.0.0-rc.10"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",

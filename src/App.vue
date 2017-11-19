@@ -8,6 +8,7 @@
       <volume-slider></volume-slider>
     </header>
     <main>
+      <midi></midi>
       <router-view></router-view>
     </main>
   </div>
@@ -16,10 +17,11 @@
 <script>
 import Tone from 'tone'
 import VolumeSlider from '@/components/VolumeSlider'
+import Midi from '@/components/Midi'
 export default {
   name: 'app',
   components: {
-    VolumeSlider
+    VolumeSlider, Midi
   },
   data () {
     return {
@@ -71,14 +73,14 @@ header {
 }
 
 header a {
-  font-size: 20px;  
+  font-size: 20px;
   line-height: 1;
   letter-spacing: .02em;
   font-weight: 400;
   box-sizing: border-box;
   color: white;
   text-decoration: none;
-  flex-grow: 1;  
+  flex-grow: 1;
   height: 100%;
   display: flex;
   justify-content: center;

@@ -17,7 +17,6 @@ export default class PressedNotes {
   }
 
   active () {
-    console.log(this._notes)
     return this._notes[this._notes.length - 1] || false
   }
 }

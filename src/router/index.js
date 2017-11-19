@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Mono from '@/components/Mono'
-import Poly from '@/components/Poly'
-import Drums from '@/components/Drums'
+import Mono from '@/components/views/Mono'
+import Poly from '@/components/views/Poly'
+import Drums from '@/components/views/Drums'
 
 Vue.use(Router)
 

@@ -2,6 +2,10 @@ import Keyboard from '@/midi/Keyboard'
 import Poly from '@/midi/synths/Poly'
 
 export default class PolySynth {
+  constructor () {
+    this.synth = Poly
+  }
+
   init () {
     Keyboard.onNote((note, notes) => {
       if (!note.velocity) {
