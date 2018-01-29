@@ -7,7 +7,7 @@ import ArpSynth from './midi/ArpSynth'
 
 class App extends Component {
   componentDidMount() {
-    this.synth = new ArpSynth()
+    this.synth = new PolySynth()
     this.synth.init()
   }
 
