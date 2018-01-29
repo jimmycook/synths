@@ -1,4 +1,4 @@
-import Keyboard from '@/midi/Keyboard'
+import Keyboard from './Keyboard'
 import Tone from 'tone'
 
 const options = {
@@ -39,3 +39,5 @@ export default class MonoSynth {
     this.synth.triggerAttackRelease(note, time)
   }
 }
+
+

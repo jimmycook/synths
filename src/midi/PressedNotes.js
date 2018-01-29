@@ -12,6 +12,10 @@ export default class PressedNotes {
     this._notes = this._notes.filter((i) => i.note !== note.note)
   }
 
+  isPressed (note) {
+    return this._notes.find((i) => note.note === i.note)
+  }
+
   push (note) {
     this._notes.push(note)
   }

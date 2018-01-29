@@ -1,5 +1,5 @@
-import Keyboard from '@/midi/Keyboard'
-import Poly from '@/midi/synths/Poly'
+import Keyboard from './Keyboard'
+import Poly from './synths/Poly'
 
 export default class PolySynth {
   constructor () {
